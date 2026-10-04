@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+:root {
+  font-family:'DM Sans','Segoe UI',sans-serif; color:#f5eff7; background:#100c12; color-scheme:dark;
+  font-synthesis:none; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  --mono:'DM Mono','Cascadia Code',Consolas,monospace; --serif:'Instrument Serif',Georgia,serif;
+  --text:#f4eef6; --orange:#ed6b3a; --orange-light:#ff9a65; --line:rgb(230 207 233 / 10%);
+}
+*{box-sizing:border-box} html{min-width:320px;scroll-behavior:smooth}
+body{min-width:320px;min-height:100vh;margin:0;background:radial-gradient(ellipse at 51% -26%,rgb(89 41 91 / 17%),transparent 55%),linear-gradient(135deg,#100c12,#100c12 52%,#120d12)}
+body::before{position:fixed;z-index:-1;inset:0;content:'';opacity:.16;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+a{-webkit-tap-highlight-color:transparent}a:focus-visible{outline:2px solid var(--orange-light);outline-offset:4px}
+::selection{color:#211018;background:#ffab7f}#root{min-height:100vh}
