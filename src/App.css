@@ -90,7 +90,16 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .console-command,.console-ready { display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin:0; color:#e4e9e5; font-size:12px; line-height:1.8; }
 .console-command span,.console-ready span { color:var(--orange-light); }
 .console-command+.console-command { margin-top:2px; }
-.project-listing { max-width:850px; display:grid; gap:22px; margin:14px 0 34px 26px; }
+.projects-terminal-body { display:flex; flex-direction:column; align-items:stretch; }
+.project-scroll-shell { position:relative; width:min(100%,876px); min-height:0; margin:14px 0 34px 26px; padding-right:26px; }
+.project-listing { max-height:600px; display:grid; gap:22px; overflow-y:auto; overscroll-behavior:contain; scrollbar-color:rgb(237 107 58 / 60%) rgb(255 255 255 / 5%); scrollbar-width:thin; }
+.project-scroll-cue { position:absolute; top:50%; right:0; display:flex; flex-direction:column; align-items:center; gap:5px; color:var(--orange-light); transform:translateY(-50%); animation:scroll-nudge 1.5s ease-in-out infinite; }
+.project-scroll-cue b { display:grid; width:22px; height:22px; place-items:center; border:1px solid rgb(237 107 58 / 35%); border-radius:50%; font:13px var(--mono); }
+.project-scroll-cue small { color:#a79891; font:7px var(--mono); letter-spacing:.08em; text-transform:uppercase; writing-mode:vertical-rl; }
+.project-listing::-webkit-scrollbar { width:5px; }
+.project-listing::-webkit-scrollbar-track { background:rgb(255 255 255 / 5%); }
+.project-listing::-webkit-scrollbar-thumb { border-radius:5px; background:rgb(237 107 58 / 60%); }
+@keyframes scroll-nudge { 0%,100% { opacity:.65; transform:translateY(-50%); } 50% { opacity:1; transform:translateY(calc(-50% + 5px)); } }
 .project-output { display:grid; gap:10px; }
 .project-output .console-command { color:#e4e9e5; }
 .project-entry { min-height:105px; display:grid; grid-template-columns:34px minmax(0,1fr); gap:12px; padding:17px 18px; border-left:2px solid rgb(237 107 58 / 58%); background:#171817; }
@@ -113,5 +122,5 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .about-console-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:23px; }
 .about-console-tags span { padding:6px 8px; border:1px solid #24e6a02e; color:#80c7a8; background:#24e6a00a; font:9px var(--mono); }
 .about-console-body .console-ready { margin-top:auto; }
-@media (max-width:760px) { .console-page { min-height:0; align-items:flex-start; padding-block:35px 40px; }.content-terminal-body { min-height:500px; padding:34px 25px; }.console-command,.console-ready { font-size:10px; }.project-listing,.about-output { margin-left:10px; }.project-entry { grid-template-columns:27px minmax(0,1fr); gap:9px; padding:15px 12px; }.project-entry p { font-size:10px; }.project-repo-link { font-size:9px; } }
-@media (max-width:460px) { .console-page { padding-block:25px 32px; }.content-terminal-bar { height:37px; padding-inline:10px; }.content-terminal-body { min-height:470px; padding:28px 15px; }.console-command,.console-ready { gap:6px; font-size:9px; }.project-listing,.about-output { margin-left:4px; }.project-entry { grid-template-columns:22px minmax(0,1fr); gap:7px; padding:13px 10px; }.project-entry h2 { font-size:11px; }.project-entry p { font-size:9px; }.project-repo-link { font-size:8px; }.about-output p { font-size:10px; } }
+@media (max-width:760px) { .console-page { min-height:0; align-items:flex-start; padding-block:35px 40px; }.content-terminal-body { min-height:500px; padding:34px 25px; }.console-command,.console-ready { font-size:10px; }.project-scroll-shell { width:calc(100% - 10px); margin-left:10px; }.project-listing,.about-output { margin-left:0; }.project-entry { grid-template-columns:27px minmax(0,1fr); gap:9px; padding:15px 12px; }.project-entry p { font-size:10px; }.project-repo-link { font-size:9px; } }
+@media (max-width:460px) { .console-page { padding-block:25px 32px; }.content-terminal-bar { height:37px; padding-inline:10px; }.content-terminal-body { min-height:470px; padding:28px 15px; }.console-command,.console-ready { gap:6px; font-size:9px; }.project-scroll-shell { width:calc(100% - 4px); margin-left:4px; padding-right:22px; }.project-listing,.about-output { margin-left:0; }.project-entry { grid-template-columns:22px minmax(0,1fr); gap:7px; padding:13px 10px; }.project-entry h2 { font-size:11px; }.project-entry p { font-size:9px; }.project-repo-link { font-size:8px; }.about-output p { font-size:10px; } }

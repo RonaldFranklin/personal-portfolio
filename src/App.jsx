@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 function Arrow() {
@@ -9,6 +9,31 @@ function Github() {
 }
 export default function App() {
   const [activeTab, setActiveTab] = useState('inicio')
+  const projectListRef = useRef(null)
+  const [projectScroll, setProjectScroll] = useState({ enabled: false, direction: 'down' })
+
+  useEffect(() => {
+    if (activeTab !== 'projetos') return undefined
+
+    const list = projectListRef.current
+    if (!list) return undefined
+
+    const updateScrollCue = () => {
+      const enabled = list.scrollHeight > list.clientHeight + 1
+      const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+      setProjectScroll({ enabled, direction: atBottom ? 'up' : 'down' })
+    }
+
+    updateScrollCue()
+    const resizeObserver = new ResizeObserver(updateScrollCue)
+    const mutationObserver = new MutationObserver(updateScrollCue)
+    resizeObserver.observe(list)
+    mutationObserver.observe(list, { childList: true, subtree: true, characterData: true })
+    return () => {
+      resizeObserver.disconnect()
+      mutationObserver.disconnect()
+    }
+  }, [activeTab])
 
   return (
     <main className="page">
@@ -56,8 +81,13 @@ export default function App() {
         <section className="console-page" aria-label="Terminal de projetos">
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/projetos</span><b>•••</b></div>
-            <div className="content-terminal-body">
-              <div className="project-listing">
+            <div className="content-terminal-body projects-terminal-body">
+              <div className="project-scroll-shell">
+              <div className="project-listing" ref={projectListRef} onScroll={() => {
+                const list = projectListRef.current
+                const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+                setProjectScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
+              }}>
                 <div className="project-output">
                   <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 01-personal-portfolio</p>
                   <article className="project-entry">
@@ -94,6 +124,8 @@ export default function App() {
                     </div>
                   </article>
                 </div>
+              </div>
+              {projectScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{projectScroll.direction === 'up' ? '↑' : '↓'}</b><small>scroll</small></span>}
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
