@@ -172,7 +172,7 @@ export default function App() {
                 <div className="stack-output">
                   <section className="stack-group">
                     <h3>backend</h3>
-                    <div className="about-console-tags"><span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>JavaScript</span><span>Java</span><span>Spring Boot</span><span>Spring Security</span></div>
+                    <div className="about-console-tags"><span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>TypeORM</span><span>JavaScript</span><span>Java</span><span>Spring Boot</span><span>Spring Security</span></div>
                   </section>
                   <section className="stack-group">
                     <h3>frontend</h3>
@@ -183,8 +183,12 @@ export default function App() {
                     <div className="about-console-tags"><span>PostgreSQL</span><span>Prisma</span><span>Neo4j</span></div>
                   </section>
                   <section className="stack-group">
+                    <h3>mensageria</h3>
+                    <div className="about-console-tags"><span>RabbitMQ</span></div>
+                  </section>
+                  <section className="stack-group">
                     <h3>ferramentas</h3>
-                    <div className="about-console-tags"><span>Docker</span><span>Git / GitHub</span><span>Maven</span><span>Swagger / OpenAPI</span><span>Selenium</span></div>
+                    <div className="about-console-tags"><span>Docker</span><span>Azure Pipelines</span><span>Azure Repos</span><span>Git / GitHub</span><span>Maven</span><span>Swagger / OpenAPI</span><span>Selenium</span></div>
                   </section>
                 </div>
               </div>
