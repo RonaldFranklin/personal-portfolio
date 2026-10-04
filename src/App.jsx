@@ -206,14 +206,19 @@ export default function App() {
                 <p className="console-command"><span>ronald@ubuntu: ~/contato $</span> ls redes/</p>
                 <div className="contact-list">
                   <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">GH</strong>
-                    <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
-                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <strong className="contact-mark" aria-hidden="true">EM</strong>
+                    <div><h2>E-mail</h2><p>ronaldfrromao@gmail.com</p></div>
+                    <a href="mailto:ronaldfrromao@gmail.com">enviar e-mail <Arrow /></a>
                   </article>
                   <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">IG</strong>
-                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
-                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <strong className="contact-mark" aria-hidden="true">IN</strong>
+                    <div><h2>LinkedIn</h2><p>linkedin.com/in/ronaldfranklinromao</p></div>
+                    <a href="https://www.linkedin.com/in/ronaldfranklinromao/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">DC</strong>
+                    <div><h2>Discord</h2><p>ronaldfrromao</p></div>
+                    <span className="contact-pending">usuário</span>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">WA</strong>
@@ -226,14 +231,14 @@ export default function App() {
                     <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
                   </article>
                   <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">EM</strong>
-                    <div><h2>E-mail</h2><p>ronaldfrromao@gmail.com</p></div>
-                    <a href="mailto:ronaldfrromao@gmail.com">enviar e-mail <Arrow /></a>
+                    <strong className="contact-mark" aria-hidden="true">GH</strong>
+                    <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
+                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
                   </article>
                   <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">DC</strong>
-                    <div><h2>Discord</h2><p>ronaldfrromao</p></div>
-                    <span className="contact-pending">usuário</span>
+                    <strong className="contact-mark" aria-hidden="true">IG</strong>
+                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
+                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
                   </article>
                 </div>
               </div>
