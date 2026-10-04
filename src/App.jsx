@@ -136,6 +136,18 @@ export default function App() {
                     </div>
                   </article>
                 </div>
+                <div className="project-output">
+                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 05-carteira-financeira</p>
+                  <article className="project-entry">
+                    <strong>05</strong>
+                    <div className="project-entry-content">
+                      <h2>Carteira Financeira</h2>
+                      <p>API de carteira financeira com contas de usuário, depósitos e transferências de saldo entre pessoas, registradas como transações reversíveis.</p>
+                      <div className="project-meta"><span>NestJS</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/carteira-financeira" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                    </div>
+                  </article>
+                </div>
               </div>
               {projectScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{projectScroll.direction === 'up' ? '↑' : '↓'}</b><small>scroll</small></span>}
               </div>
