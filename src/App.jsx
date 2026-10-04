@@ -124,6 +124,18 @@ export default function App() {
                     </div>
                   </article>
                 </div>
+                <div className="project-output">
+                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 04-emulador-game-boy</p>
+                  <article className="project-entry">
+                    <strong>04</strong>
+                    <div className="project-entry-content">
+                      <h2>Emulador Game Boy</h2>
+                      <p>Projeto feito por diversão e aprendizado: emulador web de Game Boy e Game Boy Advance, com jogos no navegador e saves individuais.</p>
+                      <div className="project-meta"><span>Game Boy</span><span>GBA</span><span>mGBA</span><span>React</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/emulador-game-boy" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                    </div>
+                  </article>
+                </div>
               </div>
               {projectScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{projectScroll.direction === 'up' ? '↑' : '↓'}</b><small>scroll</small></span>}
               </div>
