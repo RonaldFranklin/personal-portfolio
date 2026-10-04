@@ -69,6 +69,15 @@ export default function App() {
                     <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
                   </div>
                 </article>
+                <article className="project-entry">
+                  <strong>02</strong>
+                  <div className="project-entry-content">
+                    <h2>Application Foundation</h2>
+                    <p>Base reutilizável para iniciar aplicações, com autenticação e gestão de organizações. API NestJS, interface Next.js e infraestrutura Docker/Compose em projetos independentes.</p>
+                    <div className="project-meta"><span>NestJS</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
+                    <a className="project-repo-link" href="https://github.com/RonaldFranklin/application-foundation" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                  </div>
+                </article>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
