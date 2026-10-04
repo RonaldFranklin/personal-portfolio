@@ -82,6 +82,18 @@ export default function App() {
                     </div>
                   </article>
                 </div>
+                <div className="project-output">
+                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 03-auth-security-audit</p>
+                  <article className="project-entry">
+                    <strong>03</strong>
+                    <div className="project-entry-content">
+                      <h2>Auth Security Audit</h2>
+                      <p>Skill do Codex para auditar fluxos de autenticação e sessão com base em evidências, priorizando riscos demonstráveis e recomendações práticas.</p>
+                      <div className="project-meta"><span>Codex Skill</span><span>AppSec</span><span>Autenticação</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/auth-security-audit" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                    </div>
+                  </article>
+                </div>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
