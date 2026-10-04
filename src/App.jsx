@@ -60,10 +60,15 @@ export default function App() {
               <p className="console-command"><span>ronald@ubuntu: ~ $</span> cat projects</p>
               <p className="console-command"><span>ronald@ubuntu: ~ $</span> cat projects.git</p>
               <div className="project-listing">
-                <div className="project-entry project-empty">
-                  <strong>--</strong>
-                  <div><h2>Projetos em preparação</h2><p>Estou selecionando os trabalhos que vão aparecer aqui, cada um com uma breve descrição e o link do repositório.</p></div>
-                </div>
+                <article className="project-entry">
+                  <strong>01</strong>
+                  <div className="project-entry-content">
+                    <h2>Personal Portfolio</h2>
+                    <p>Meu site pessoal em construção, feito com React e Vite e inspirado na interface escura do Ubuntu.</p>
+                    <div className="project-meta"><span>React</span><span>Vite</span></div>
+                    <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                  </div>
+                </article>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
