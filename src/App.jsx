@@ -45,6 +45,7 @@ export default function App() {
           <button type="button" aria-current={activeTab === 'inicio' ? 'page' : undefined} onClick={() => setActiveTab('inicio')}>Início</button>
           <button type="button" aria-current={activeTab === 'projetos' ? 'page' : undefined} onClick={() => setActiveTab('projetos')}>Projetos</button>
           <button type="button" aria-current={activeTab === 'sobre' ? 'page' : undefined} onClick={() => setActiveTab('sobre')}>Sobre</button>
+          <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>Contato</button>
         </nav>
       </header>
       {activeTab === 'inicio' ? (
@@ -155,7 +156,7 @@ export default function App() {
             </div>
           </div>
         </section>
-      ) : (
+      ) : activeTab === 'sobre' ? (
         <section className="console-page" aria-label="Terminal sobre mim">
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/perfil</span><b>•••</b></div>
@@ -190,6 +191,50 @@ export default function App() {
                     <h3>ferramentas</h3>
                     <div className="about-console-tags"><span>Docker</span><span>Azure Pipelines</span><span>Azure Repos</span><span>Git / GitHub</span><span>Maven</span><span>Swagger / OpenAPI</span><span>Selenium</span></div>
                   </section>
+                </div>
+              </div>
+              <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="console-page" aria-label="Terminal de contato">
+          <div className="content-terminal">
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/contato</span><b>•••</b></div>
+            <div className="content-terminal-body contact-console-body">
+              <div className="about-output contact-output">
+                <p className="console-command"><span>ronald@ubuntu: ~/contato $</span> ls redes/</p>
+                <div className="contact-list">
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">GH</strong>
+                    <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
+                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">IG</strong>
+                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
+                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">WA</strong>
+                    <div><h2>WhatsApp</h2><p>+55 31 99145-4035</p></div>
+                    <a href="https://wa.me/5531991454035" target="_blank" rel="noreferrer">enviar mensagem <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">ST</strong>
+                    <div><h2>Steam</h2><p>steamcommunity.com/profiles/76561199004578638</p></div>
+                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">EM</strong>
+                    <div><h2>E-mail</h2><p>ronaldfrromao@gmail.com</p></div>
+                    <a href="mailto:ronaldfrromao@gmail.com">enviar e-mail <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">DC</strong>
+                    <div><h2>Discord</h2><p>ronaldfrromao</p></div>
+                    <span className="contact-pending">usuário</span>
+                  </article>
                 </div>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>

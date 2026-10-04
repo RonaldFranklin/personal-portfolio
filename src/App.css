@@ -129,3 +129,18 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .stack-output { grid-template-columns:1fr; gap:17px; }.project-entry { grid-template-columns:27px minmax(0,1fr); gap:9px; padding:15px 12px; }.project-entry p { font-size:10px; }.project-repo-link { font-size:9px; } }
 @media (max-width:460px) { .console-page { padding-block:25px 32px; }.content-terminal-bar { height:37px; padding-inline:10px; }.content-terminal-body { min-height:470px; padding:28px 15px; }.console-command,.console-ready { gap:6px; font-size:9px; }.project-scroll-shell { width:calc(100% - 4px); margin-left:4px; padding-right:22px; }.project-listing,.about-output { margin-left:0; }
 .stack-output { grid-template-columns:1fr; gap:17px; }.project-entry { grid-template-columns:22px minmax(0,1fr); gap:7px; padding:13px 10px; }.project-entry h2 { font-size:11px; }.project-entry p { font-size:9px; }.project-repo-link { font-size:8px; }.about-output p { font-size:10px; } }
+
+.contact-console-body { display:flex; flex-direction:column; align-items:stretch; }
+.contact-output { width:min(100%,876px); }
+.contact-list { display:grid; gap:10px; }
+.contact-row { min-width:0; display:grid; grid-template-columns:34px minmax(0,1fr) auto; align-items:center; gap:14px; padding:15px 18px; border-left:2px solid rgb(237 107 58 / 58%); background:#171817; }
+.contact-mark { width:30px; height:30px; display:grid; place-items:center; border:1px solid rgb(237 107 58 / 30%); color:var(--orange-light); font:9px var(--mono); }
+.contact-row>div { min-width:0; }
+.contact-row h2 { margin:0 0 5px; color:#eef2ef; font:500 12px/1.5 var(--mono); }
+.contact-row p { margin:0; color:#929b95; font:10px/1.6 var(--mono); overflow-wrap:anywhere; }
+.contact-row>a,.contact-pending { display:inline-flex; align-items:center; gap:6px; color:var(--orange-light); text-decoration:none; white-space:nowrap; font:9px var(--mono); }
+.contact-row>a:hover { color:#ffd1bd; }
+.contact-row>a svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.contact-pending { color:#786e72; }
+.contact-console-body .console-ready { margin-top:auto; }
+@media (max-width:460px) { .contact-row { grid-template-columns:27px minmax(0,1fr); gap:9px; padding:13px 10px; }.contact-mark { width:25px; height:25px; font-size:8px; }.contact-row>a,.contact-pending { grid-column:2; font-size:8px; }.contact-row h2 { font-size:11px; }.contact-row p { font-size:9px; } }
