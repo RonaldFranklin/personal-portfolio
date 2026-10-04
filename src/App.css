@@ -83,27 +83,29 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .main-nav button:hover,.main-nav button[aria-current="page"] { color:#f4eef6; }
 .main-nav button[aria-current="page"]::after { position:absolute; right:0; bottom:2px; left:0; height:1px; content:''; background:var(--orange-light); box-shadow:0 0 8px #ed6b3a78; }
 .console-page { width:min(100%,1280px); min-height:min(720px,calc(100svh - 138px)); flex:1; display:flex; align-items:center; margin:auto; padding:28px 0 34px; }
-.content-terminal { width:100%; overflow:hidden; border:1px solid rgb(225 224 230 / 10%); border-radius:5px; background:#0b0d0c; box-shadow:0 30px 90px #0008,0 0 60px rgb(71 128 99 / 5%); }
+.content-terminal { width:100%; overflow:hidden; border:1px solid rgb(225 224 230 / 10%); border-radius:5px; background:#0b0d0c; box-shadow:0 30px 90px #0008,0 0 60px rgb(237 107 58 / 6%); }
 .content-terminal-bar { height:41px; display:flex; align-items:center; justify-content:space-between; padding:0 15px; border-bottom:1px solid #ffffff10; color:#a3a6a3; background:#191b1a; font:9px var(--mono); }
 .content-terminal-bar b { color:#858985; font-size:9px; letter-spacing:.12em; }
-.content-terminal-body { min-height:560px; padding:clamp(28px,5vw,54px) clamp(22px,6.2vw,82px); color:#e9efeb; background:radial-gradient(ellipse at 0% 0%,rgb(42 92 65 / 9%),transparent 36%),#0b0d0c; font-family:var(--mono); }
+.content-terminal-body { min-height:560px; padding:clamp(28px,5vw,54px) clamp(22px,6.2vw,82px); color:#e9efeb; background:radial-gradient(ellipse at 0% 0%,rgb(237 107 58 / 8%),transparent 36%),#0b0d0c; font-family:var(--mono); }
 .console-command,.console-ready { display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin:0; color:#e4e9e5; font-size:12px; line-height:1.8; }
-.console-command span,.console-ready span { color:#24e6a0; }
+.console-command span,.console-ready span { color:var(--orange-light); }
 .console-command+.console-command { margin-top:2px; }
-.project-listing { max-width:850px; display:grid; gap:14px; margin:16px 0 34px 26px; }
-.project-entry { min-height:105px; display:grid; grid-template-columns:34px minmax(0,1fr); gap:12px; padding:17px 18px; border-left:2px solid #343a36; background:#171918; }
-.project-entry>strong { color:#22e991; font-size:12px; }
+.project-listing { max-width:850px; display:grid; gap:22px; margin:14px 0 34px 26px; }
+.project-output { display:grid; gap:10px; }
+.project-output .console-command { color:#e4e9e5; }
+.project-entry { min-height:105px; display:grid; grid-template-columns:34px minmax(0,1fr); gap:12px; padding:17px 18px; border-left:2px solid rgb(237 107 58 / 58%); background:#171817; }
+.project-entry>strong { color:var(--orange-light); font-size:12px; }
 .project-entry h2 { margin:0 0 7px; color:#eef2ef; font:500 13px/1.5 var(--mono); }
 .project-entry p { max-width:700px; margin:0; color:#929b95; font:11px/1.75 var(--mono); }
 .project-entry-content { min-width:0; }
 .project-meta { display:flex; gap:7px; margin-top:12px; }
-.project-meta span { padding:4px 6px; border:1px solid #24e6a02a; color:#82c5a8; font-size:8px; }
-.project-repo-link { width:max-content; display:inline-flex; align-items:center; gap:6px; margin-top:14px; color:#24e6a0; text-decoration:none; font-size:10px; }
-.project-repo-link:hover { color:#a5ffd8; }
+.project-meta span { padding:4px 6px; border:1px solid rgb(237 107 58 / 22%); color:#d8a089; font-size:8px; }
+.project-repo-link { width:max-content; display:inline-flex; align-items:center; gap:6px; margin-top:14px; color:var(--orange-light); text-decoration:none; font-size:10px; }
+.project-repo-link:hover { color:#ffd1bd; }
 .project-repo-link svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
 .project-empty>strong { color:#56615a; }
 .console-ready { gap:10px; color:#e8ece9; font-size:11px; }
-.console-ready i { width:7px; height:14px; background:#2ee99e; animation:blink 1.1s steps(2,start) infinite; }
+.console-ready i { width:7px; height:14px; background:var(--orange-light); animation:blink 1.1s steps(2,start) infinite; }
 .about-console-body { display:flex; flex-direction:column; align-items:flex-start; }
 .about-output { max-width:760px; margin:24px 0 28px 26px; }
 .about-output h2 { margin:0 0 15px; color:#eef2ef; font:500 clamp(18px,2.5vw,24px)/1.5 var(--mono); }

@@ -57,27 +57,31 @@ export default function App() {
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/projetos</span><b>•••</b></div>
             <div className="content-terminal-body">
-              <p className="console-command"><span>ronald@ubuntu: ~ $</span> cat projects</p>
-              <p className="console-command"><span>ronald@ubuntu: ~ $</span> cat projects.git</p>
               <div className="project-listing">
-                <article className="project-entry">
-                  <strong>01</strong>
-                  <div className="project-entry-content">
-                    <h2>Personal Portfolio</h2>
-                    <p>Meu site pessoal em construção, feito com React e Vite e inspirado na interface escura do Ubuntu.</p>
-                    <div className="project-meta"><span>React</span><span>Vite</span></div>
-                    <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
-                  </div>
-                </article>
-                <article className="project-entry">
-                  <strong>02</strong>
-                  <div className="project-entry-content">
-                    <h2>Application Foundation</h2>
-                    <p>Base reutilizável para iniciar aplicações, com autenticação e gestão de organizações. API NestJS, interface Next.js e infraestrutura Docker/Compose em projetos independentes.</p>
-                    <div className="project-meta"><span>NestJS</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
-                    <a className="project-repo-link" href="https://github.com/RonaldFranklin/application-foundation" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
-                  </div>
-                </article>
+                <div className="project-output">
+                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 01-personal-portfolio</p>
+                  <article className="project-entry">
+                    <strong>01</strong>
+                    <div className="project-entry-content">
+                      <h2>Personal Portfolio</h2>
+                      <p>Meu site pessoal em construção, feito com React e Vite e inspirado na interface escura do Ubuntu.</p>
+                      <div className="project-meta"><span>React</span><span>Vite</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                    </div>
+                  </article>
+                </div>
+                <div className="project-output">
+                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 02-application-foundation</p>
+                  <article className="project-entry">
+                    <strong>02</strong>
+                    <div className="project-entry-content">
+                      <h2>Application Foundation</h2>
+                      <p>Base reutilizável para iniciar aplicações, com autenticação e gestão de organizações. API NestJS, interface Next.js e infraestrutura Docker/Compose em projetos independentes.</p>
+                      <div className="project-meta"><span>NestJS</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/application-foundation" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                    </div>
+                  </article>
+                </div>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
