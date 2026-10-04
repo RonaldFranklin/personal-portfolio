@@ -164,7 +164,7 @@ export default function App() {
                 <p className="console-command"><span>ronald@ubuntu: ~/perfil $</span> cat perfil.txt</p>
                 <article className="about-entry">
                   <h2>Ronald Franklin Rodrigues Romão</h2>
-                  <p>Sou desenvolvedor de software e graduado em Sistemas de Informação. Comecei minha trajetória no backend, construindo APIs e trabalhando com bancos de dados e sistemas de grande porte. Hoje também atuo no front-end, conectando as duas pontas no desenvolvimento full stack.</p>
+                  <p>Sou desenvolvedor de software, graduado em Sistemas de Informação e pós-graduado em Arquitetura de Software. Comecei minha trajetória no backend, construindo APIs e trabalhando com bancos de dados e sistemas de grande porte. Hoje também atuo no front-end. Escolhi TypeScript porque usar a mesma linguagem no front e no backend me permite desenvolver soluções full stack com mais eficiência.</p>
                 </article>
               </div>
               <div className="about-output">
