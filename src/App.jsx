@@ -7,6 +7,19 @@ function Arrow() {
 function Github() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.5.1.7-.2.7-.5v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .7 2.6.5 3.2.4.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3.1 1.2a10.6 10.6 0 0 1 5.5 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.5.2 2.7.1 3 .7.8 1.2 1.8 1.2 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1 .7 2.1v3.1c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9Z" /></svg>
 }
+function SocialEntry({ cwd, command, mark, title, detail, href, action, external = true }) {
+  return (
+    <div className="project-output social-output">
+      <p className="console-command"><span>ronald@ubuntu: ~/{cwd} $</span> cat {command}</p>
+      <article className="contact-row">
+        <strong className="contact-mark" aria-hidden="true">{mark}</strong>
+        <div><h2>{title}</h2><p>{detail}</p></div>
+        {href ? <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{action} <Arrow /></a> : <span className="contact-pending">{action}</span>}
+      </article>
+    </div>
+  )
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('inicio')
   const [language, setLanguage] = useState('pt')
@@ -220,8 +233,8 @@ export default function App() {
                   </section>
                 </div>
               </div>
-              </div>
-              {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
+                            </div>
+{contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
@@ -239,26 +252,13 @@ export default function App() {
                 setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
               }}>
               <div className="about-output contact-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'interests' : 'interesses'} $</span> {isEnglish ? 'ls interests/' : 'ls gostos/'}</p>
                 <p className="interest-intro">{isEnglish ? 'A few things I enjoy beyond building software.' : 'Um pouco do que gosto além de construir software.'}</p>
-                <div className="contact-list">
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">SP</strong>
-                    <div><h2>Spotify</h2><p>open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4</p></div>
-                    <a href="https://open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4" target="_blank" rel="noreferrer">{isEnglish ? 'listen on Spotify' : 'abrir no Spotify'} <Arrow /></a>
-                  </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">ST</strong>
-                    <div><h2>Steam</h2><p>steamcommunity.com/profiles/76561199004578638</p></div>
-                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">IG</strong>
-                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
-                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
+                <div className="social-entries">
+                  <SocialEntry cwd={isEnglish ? 'interests' : 'interesses'} command="spotify.profile" mark="SP" title="Spotify" detail="open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4" href="https://open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4" action={isEnglish ? 'listen on Spotify' : 'abrir no Spotify'} />
+                  <SocialEntry cwd={isEnglish ? 'interests' : 'interesses'} command="steam.profile" mark="ST" title="Steam" detail="steamcommunity.com/profiles/76561199004578638" href="https://steamcommunity.com/profiles/76561199004578638/" action={isEnglish ? 'open profile' : 'abrir perfil'} />
+                  <SocialEntry cwd={isEnglish ? 'interests' : 'interesses'} command="instagram.profile" mark="IG" title="Instagram" detail="@_ronaldfranklin" href="https://www.instagram.com/_ronaldfranklin/" action={isEnglish ? 'open profile' : 'abrir perfil'} />
                 </div>
-              </div>
+                </div>
               </div>
               {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
               </div>
@@ -278,33 +278,13 @@ export default function App() {
                 setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
               }}>
               <div className="about-output contact-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'networks' : 'redes'} $</span> {isEnglish ? 'ls networks/' : 'ls redes/'}</p>
-                <div className="contact-list">
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">EM</strong>
-                    <div><h2>{isEnglish ? 'Email' : 'E-mail'}</h2><p>ronaldfrromao@gmail.com</p></div>
-                    <a href="mailto:ronaldfrromao@gmail.com">{isEnglish ? 'send email' : 'enviar e-mail'} <Arrow /></a>
-                  </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">IN</strong>
-                    <div><h2>LinkedIn</h2><p>linkedin.com/in/ronaldfranklinromao</p></div>
-                    <a href="https://www.linkedin.com/in/ronaldfranklinromao/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">DC</strong>
-                    <div><h2>Discord</h2><p>ronaldfrromao</p></div>
-                    <span className="contact-pending">{isEnglish ? 'username' : 'usuário'}</span>
-                  </article>
-
-
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">GH</strong>
-                    <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
-                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
-
+                <div className="social-entries">
+                  <SocialEntry cwd={isEnglish ? 'networks' : 'redes'} command="email.profile" mark="EM" title={isEnglish ? 'Email' : 'E-mail'} detail="ronaldfrromao@gmail.com" href="mailto:ronaldfrromao@gmail.com" action={isEnglish ? 'send email' : 'enviar e-mail'} external={false} />
+                  <SocialEntry cwd={isEnglish ? 'networks' : 'redes'} command="linkedin.profile" mark="IN" title="LinkedIn" detail="linkedin.com/in/ronaldfranklinromao" href="https://www.linkedin.com/in/ronaldfranklinromao/" action={isEnglish ? 'open profile' : 'abrir perfil'} />
+                  <SocialEntry cwd={isEnglish ? 'networks' : 'redes'} command="discord.profile" mark="DC" title="Discord" detail="ronaldfrromao" action={isEnglish ? 'username' : 'usuário'} />
+                  <SocialEntry cwd={isEnglish ? 'networks' : 'redes'} command="github.profile" mark="GH" title="GitHub" detail="github.com/RonaldFranklin" href="https://github.com/RonaldFranklin" action={isEnglish ? 'open profile' : 'abrir perfil'} />
                 </div>
-              </div>
+                </div>
               </div>
               {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
               </div>

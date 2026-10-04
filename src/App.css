@@ -179,3 +179,11 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 
 .interest-intro { margin:0 0 16px; color:#a2aaa4; font:11px/1.8 var(--mono); }
 @media (max-width:460px) { .wordmark { gap:6px; font-size:12px; }.main-nav { gap:4px; }.main-nav button { font-size:7px; }.language-switch button { min-width:16px; padding-inline:1px; } }
+
+/* Let the scrollable terminal content use the full available width. */
+.project-scroll-shell,.content-scroll-shell { width:auto; max-width:none; margin-right:0; min-width:0; }
+.contact-scroll-shell .contact-output { max-width:none; }
+.social-entries { display:grid; gap:20px; }
+.social-output { min-width:0; }
+@media (max-width:760px) { .project-scroll-shell,.content-scroll-shell { width:auto; } }
+@media (max-width:460px) { .project-scroll-shell,.content-scroll-shell { width:auto; } }
