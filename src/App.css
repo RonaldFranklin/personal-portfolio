@@ -144,3 +144,8 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .contact-pending { color:#786e72; }
 .contact-console-body .console-ready { margin-top:auto; }
 @media (max-width:460px) { .contact-row { grid-template-columns:27px minmax(0,1fr); gap:9px; padding:13px 10px; }.contact-mark { width:25px; height:25px; font-size:8px; }.contact-row>a,.contact-pending { grid-column:2; font-size:8px; }.contact-row h2 { font-size:11px; }.contact-row p { font-size:9px; } }
+
+.language-switch { display:inline-flex; align-items:center; gap:2px; margin-left:2px; padding:3px; border:1px solid rgb(225 224 230 / 13%); border-radius:4px; }
+.language-switch button { min-width:25px; padding:5px 4px; border:0; border-radius:2px; color:#988b9d; background:transparent; cursor:pointer; font:9px var(--mono); transition:color .18s,background .18s; }
+.language-switch button:hover,.language-switch button[aria-pressed="true"] { color:#f4eef6; background:rgb(237 107 58 / 20%); }
+@media (max-width:460px) { .main-nav { gap:6px; }.main-nav button { font-size:8px; }.language-switch { gap:1px; margin-left:0; padding:2px; }.language-switch button { min-width:19px; padding:4px 2px; font-size:8px; } }

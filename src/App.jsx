@@ -9,8 +9,19 @@ function Github() {
 }
 export default function App() {
   const [activeTab, setActiveTab] = useState('inicio')
+  const [language, setLanguage] = useState('pt')
+  const isEnglish = language === 'en'
   const projectListRef = useRef(null)
   const [projectScroll, setProjectScroll] = useState({ enabled: false, direction: 'down' })
+
+  useEffect(() => {
+    document.documentElement.lang = isEnglish ? 'en' : 'pt-BR'
+    document.title = isEnglish ? 'Ronald — personal website' : 'Ronald — site pessoal'
+    const description = document.querySelector('meta[name="description"]')
+    if (description) description.content = isEnglish
+      ? 'Ronald’s personal space: projects, learning, and ideas in software.'
+      : 'O espaço pessoal de Ronald: projetos, aprendizados e ideias para a web.'
+  }, [isEnglish])
 
   useEffect(() => {
     if (activeTab !== 'projetos') return undefined
@@ -40,48 +51,52 @@ export default function App() {
       <div className="ambient ambient-purple" /><div className="ambient ambient-orange" />
       <header className="topbar">
         <a className="wordmark" href="#inicio" onClick={() => setActiveTab('inicio')}><span className="ubuntu-mark"><i /><i /><i /></span>ronald<span className="orange">.dev</span></a>
-        <span className="top-note"><i /> backend · dados · sistemas</span>
-        <nav className="main-nav" aria-label="Navegação principal">
-          <button type="button" aria-current={activeTab === 'inicio' ? 'page' : undefined} onClick={() => setActiveTab('inicio')}>Início</button>
-          <button type="button" aria-current={activeTab === 'projetos' ? 'page' : undefined} onClick={() => setActiveTab('projetos')}>Projetos</button>
-          <button type="button" aria-current={activeTab === 'sobre' ? 'page' : undefined} onClick={() => setActiveTab('sobre')}>Sobre</button>
-          <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>Contato</button>
+        <span className="top-note"><i /> {isEnglish ? 'backend · data · systems' : 'backend · dados · sistemas'}</span>
+        <nav className="main-nav" aria-label={isEnglish ? 'Main navigation' : 'Navegação principal'}>
+          <button type="button" aria-current={activeTab === 'inicio' ? 'page' : undefined} onClick={() => setActiveTab('inicio')}>{isEnglish ? 'Home' : 'Início'}</button>
+          <button type="button" aria-current={activeTab === 'projetos' ? 'page' : undefined} onClick={() => setActiveTab('projetos')}>{isEnglish ? 'Projects' : 'Projetos'}</button>
+          <button type="button" aria-current={activeTab === 'sobre' ? 'page' : undefined} onClick={() => setActiveTab('sobre')}>{isEnglish ? 'About' : 'Sobre'}</button>
+          <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>{isEnglish ? 'Contact' : 'Contato'}</button>
+          <div className="language-switch" role="group" aria-label={isEnglish ? 'Language' : 'Idioma'}>
+            <button type="button" aria-pressed={!isEnglish} onClick={() => setLanguage('pt')}>PT</button>
+            <button type="button" aria-pressed={isEnglish} onClick={() => setLanguage('en')}>EN</button>
+          </div>
         </nav>
       </header>
       {activeTab === 'inicio' ? (
       <section className="hero" id="inicio">
         <div className="hero-copy">
-          <p className="eyebrow"><i /> OLÁ, QUE BOM TER VOCÊ AQUI</p>
-          <h1>Eu sou <span>Ronald</span><br />e construo<br /><em>software.</em></h1>
-          <p className="intro">Comecei minha trajetória no backend e hoje atuo como desenvolvedor full stack, do banco de dados às interfaces. Também tenho experiência com APIs e sistemas de grande porte.</p>
+          <p className="eyebrow"><i /> {isEnglish ? 'HELLO, GLAD YOU’RE HERE' : 'OLÁ, QUE BOM TER VOCÊ AQUI'}</p>
+          <h1>{isEnglish ? 'I’m ' : 'Eu sou '}<span>Ronald</span><br />{isEnglish ? 'and I build' : 'e construo'}<br /><em>software.</em></h1>
+          <p className="intro">{isEnglish ? 'I started out in backend development and now work across the stack, from databases to user interfaces. I also have experience building APIs and large-scale systems.' : 'Comecei minha trajetória no backend e hoje atuo como desenvolvedor full stack, do banco de dados às interfaces. Também tenho experiência com APIs e sistemas de grande porte.'}</p>
           <div className="actions">
-            <a className="button" href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer"><Github /> Conheça meu GitHub <Arrow /></a>
-            <small>meus projetos começam por lá</small>
+            <a className="button" href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer"><Github /> {isEnglish ? 'Visit my GitHub' : 'Conheça meu GitHub'} <Arrow /></a>
+            <small>{isEnglish ? 'my projects start there' : 'meus projetos começam por lá'}</small>
           </div>
-          <div className="signoff"><i /><p>Um projeto pessoal,<small>em construção — como todo bom projeto.</small></p></div>
+          <div className="signoff"><i /><p>{isEnglish ? 'A personal project,' : 'Um projeto pessoal,'}<small>{isEnglish ? 'under construction — like every good project.' : 'em construção — como todo bom projeto.'}</small></p></div>
         </div>
         <div className="art">
           <div className="orbit orbit-a" /><div className="orbit orbit-b" /><div className="glow" />
           <div className="window">
-            <div className="window-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/perfil</span><b>•••</b></div>
+            <div className="window-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'}</span><b>•••</b></div>
             <div className="window-inner">
-              <div className="portrait"><div className="ring ring-a" /><div className="ring ring-b" /><div className="avatar"><img src="https://github.com/RonaldFranklin.png?size=320" alt="Foto de perfil de Ronald no GitHub" /><i>✦</i></div><span className="spark">✳</span><span className="chip">⌘ &nbsp; software em construção</span></div>
+              <div className="portrait"><div className="ring ring-a" /><div className="ring ring-b" /><div className="avatar"><img src="https://github.com/RonaldFranklin.png?size=320" alt={isEnglish ? 'Ronald’s GitHub profile picture' : 'Foto de perfil de Ronald no GitHub'} /><i>✦</i></div><span className="spark">✳</span><span className="chip">⌘ &nbsp; {isEnglish ? 'software under construction' : 'software em construção'}</span></div>
               <div className="terminal">
                 <div className="command"><b>❯</b> whoami <i /></div>
-                <p>Ronald<small>desenvolvedor de software</small></p>
-                <div className="tags"><span>backend</span><span>dados</span><span>sistemas</span></div>
+                <p>Ronald<small>{isEnglish ? 'software developer' : 'desenvolvedor de software'}</small></p>
+                <div className="tags"><span>backend</span><span>{isEnglish ? 'data' : 'dados'}</span><span>{isEnglish ? 'systems' : 'sistemas'}</span></div>
               </div>
             </div>
-            <div className="window-foot"><span><i /> perfil em construção</span><span>v. 01.0</span></div>
+            <div className="window-foot"><span><i /> {isEnglish ? 'profile under construction' : 'perfil em construção'}</span><span>v. 01.0</span></div>
           </div>
-          <span className="float float-a">✳ &nbsp; ideias em andamento</span>
-          <span className="float float-b"><b>{'{ }'}</b> &nbsp; feito com intenção</span>
+          <span className="float float-a">✳ &nbsp; {isEnglish ? 'ideas in progress' : 'ideias em andamento'}</span>
+          <span className="float float-b"><b>{'{ }'}</b> &nbsp; {isEnglish ? 'made with intention' : 'feito com intenção'}</span>
         </div>
       </section>
       ) : activeTab === 'projetos' ? (
-        <section className="console-page" aria-label="Terminal de projetos">
+        <section className="console-page" aria-label={isEnglish ? 'Projects terminal' : 'Terminal de projetos'}>
           <div className="content-terminal">
-            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/projetos</span><b>•••</b></div>
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'}</span><b>•••</b></div>
             <div className="content-terminal-body projects-terminal-body">
               <div className="project-scroll-shell">
               <div className="project-listing" ref={projectListRef} onScroll={() => {
@@ -90,62 +105,62 @@ export default function App() {
                 setProjectScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
               }}>
                 <div className="project-output">
-                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 01-personal-portfolio</p>
+                  <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'} $</span> cat 01-personal-portfolio</p>
                   <article className="project-entry">
                     <strong>01</strong>
                     <div className="project-entry-content">
                       <h2>Personal Portfolio</h2>
-                      <p>Meu site pessoal em construção, feito com React e Vite e inspirado na interface escura do Ubuntu.</p>
+                      <p>{isEnglish ? 'My personal website, built with React and Vite and inspired by Ubuntu’s dark interface.' : 'Meu site pessoal em construção, feito com React e Vite e inspirado na interface escura do Ubuntu.'}</p>
                       <div className="project-meta"><span>React</span><span>Vite</span></div>
-                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/personal-portfolio" target="_blank" rel="noreferrer">{isEnglish ? 'view repository' : 'ver repositório'} <Arrow /></a>
                     </div>
                   </article>
                 </div>
                 <div className="project-output">
-                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 02-application-foundation</p>
+                  <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'} $</span> cat 02-application-foundation</p>
                   <article className="project-entry">
                     <strong>02</strong>
                     <div className="project-entry-content">
                       <h2>Application Foundation</h2>
-                      <p>Base reutilizável para iniciar aplicações, com autenticação e gestão de organizações. API NestJS, interface Next.js e infraestrutura Docker/Compose em projetos independentes.</p>
+                      <p>{isEnglish ? 'A reusable foundation for new applications, with authentication and organization management. NestJS API, Next.js interface, and Docker/Compose infrastructure in independent projects.' : 'Base reutilizável para iniciar aplicações, com autenticação e gestão de organizações. API NestJS, interface Next.js e infraestrutura Docker/Compose em projetos independentes.'}</p>
                       <div className="project-meta"><span>NestJS</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
-                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/application-foundation" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/application-foundation" target="_blank" rel="noreferrer">{isEnglish ? 'view repository' : 'ver repositório'} <Arrow /></a>
                     </div>
                   </article>
                 </div>
                 <div className="project-output">
-                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 03-auth-security-audit</p>
+                  <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'} $</span> cat 03-auth-security-audit</p>
                   <article className="project-entry">
                     <strong>03</strong>
                     <div className="project-entry-content">
                       <h2>Auth Security Audit</h2>
-                      <p>Skill do Codex para auditar fluxos de autenticação e sessão com base em evidências, priorizando riscos demonstráveis e recomendações práticas.</p>
-                      <div className="project-meta"><span>Codex Skill</span><span>AppSec</span><span>Autenticação</span></div>
-                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/auth-security-audit" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                      <p>{isEnglish ? 'A Codex skill for evidence-based audits of authentication and session flows, focused on demonstrable risks and practical recommendations.' : 'Skill do Codex para auditar fluxos de autenticação e sessão com base em evidências, priorizando riscos demonstráveis e recomendações práticas.'}</p>
+                      <div className="project-meta"><span>Codex Skill</span><span>AppSec</span><span>{isEnglish ? 'Authentication' : 'Autenticação'}</span></div>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/auth-security-audit" target="_blank" rel="noreferrer">{isEnglish ? 'view repository' : 'ver repositório'} <Arrow /></a>
                     </div>
                   </article>
                 </div>
                 <div className="project-output">
-                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 04-emulador-game-boy</p>
+                  <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'} $</span> {isEnglish ? 'cat 04-game-boy-emulator' : 'cat 04-emulador-game-boy'}</p>
                   <article className="project-entry">
                     <strong>04</strong>
                     <div className="project-entry-content">
-                      <h2>Emulador Game Boy</h2>
-                      <p>Projeto feito por diversão e aprendizado: emulador web de Game Boy e Game Boy Advance, com jogos no navegador e saves individuais.</p>
+                      <h2>{isEnglish ? 'Game Boy Emulator' : 'Emulador Game Boy'}</h2>
+                      <p>{isEnglish ? 'A fun learning project: a web emulator for Game Boy and Game Boy Advance, with browser-based games and individual save files.' : 'Projeto feito por diversão e aprendizado: emulador web de Game Boy e Game Boy Advance, com jogos no navegador e saves individuais.'}</p>
                       <div className="project-meta"><span>Game Boy</span><span>GBA</span><span>mGBA</span><span>React</span></div>
-                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/emulador-game-boy" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/emulador-game-boy" target="_blank" rel="noreferrer">{isEnglish ? 'view repository' : 'ver repositório'} <Arrow /></a>
                     </div>
                   </article>
                 </div>
                 <div className="project-output">
-                  <p className="console-command"><span>ronald@ubuntu: ~/projetos $</span> cat 05-carteira-financeira</p>
+                  <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'projects' : 'projetos'} $</span> {isEnglish ? 'cat 05-personal-finance-wallet' : 'cat 05-carteira-financeira'}</p>
                   <article className="project-entry">
                     <strong>05</strong>
                     <div className="project-entry-content">
-                      <h2>Carteira Financeira</h2>
-                      <p>API de carteira financeira com contas de usuário, depósitos e transferências de saldo entre pessoas, registradas como transações reversíveis.</p>
+                      <h2>{isEnglish ? 'Personal Finance Wallet' : 'Carteira Financeira'}</h2>
+                      <p>{isEnglish ? 'A personal finance API with user accounts, deposits, and balance transfers between people, recorded as reversible transactions.' : 'API de carteira financeira com contas de usuário, depósitos e transferências de saldo entre pessoas, registradas como transações reversíveis.'}</p>
                       <div className="project-meta"><span>NestJS</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span></div>
-                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/carteira-financeira" target="_blank" rel="noreferrer">ver repositório <Arrow /></a>
+                      <a className="project-repo-link" href="https://github.com/RonaldFranklin/carteira-financeira" target="_blank" rel="noreferrer">{isEnglish ? 'view repository' : 'ver repositório'} <Arrow /></a>
                     </div>
                   </article>
                 </div>
@@ -157,19 +172,19 @@ export default function App() {
           </div>
         </section>
       ) : activeTab === 'sobre' ? (
-        <section className="console-page" aria-label="Terminal sobre mim">
+        <section className="console-page" aria-label={isEnglish ? 'About terminal' : 'Terminal sobre mim'}>
           <div className="content-terminal">
-            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/perfil</span><b>•••</b></div>
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'}</span><b>•••</b></div>
             <div className="content-terminal-body about-console-body">
               <div className="about-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/perfil $</span> cat perfil.txt</p>
+                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'} $</span> {isEnglish ? 'cat profile.txt' : 'cat perfil.txt'}</p>
                 <article className="about-entry">
                   <h2>Ronald Franklin Rodrigues Romão</h2>
-                  <p>Sou desenvolvedor de software, graduado em Sistemas de Informação e pós-graduado em Arquitetura de Software. Comecei minha trajetória no backend, construindo APIs e trabalhando com bancos de dados e sistemas de grande porte. Hoje também atuo no front-end. Escolhi TypeScript porque usar a mesma linguagem no front e no backend me permite desenvolver soluções full stack com mais eficiência.</p>
+                  <p>{isEnglish ? 'I’m a software developer with a degree in Information Systems and a postgraduate degree in Software Architecture. I started out in backend development, building APIs and working with databases and large-scale systems. Today I also work on the frontend. I chose TypeScript because using the same language across the frontend and backend helps me build full-stack solutions more efficiently.' : 'Sou desenvolvedor de software, graduado em Sistemas de Informação e pós-graduado em Arquitetura de Software. Comecei minha trajetória no backend, construindo APIs e trabalhando com bancos de dados e sistemas de grande porte. Hoje também atuo no front-end. Escolhi TypeScript porque usar a mesma linguagem no front e no backend me permite desenvolver soluções full stack com mais eficiência.'}</p>
                 </article>
               </div>
               <div className="about-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/perfil $</span> ls stacks/</p>
+                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'} $</span> ls stacks/</p>
                 <div className="stack-output">
                   <section className="stack-group">
                     <h3>backend</h3>
@@ -180,15 +195,15 @@ export default function App() {
                     <div className="about-console-tags"><span>TypeScript</span><span>JavaScript</span><span>React</span></div>
                   </section>
                   <section className="stack-group">
-                    <h3>dados</h3>
+                    <h3>{isEnglish ? 'data' : 'dados'}</h3>
                     <div className="about-console-tags"><span>PostgreSQL</span><span>Prisma</span><span>Neo4j</span></div>
                   </section>
                   <section className="stack-group">
-                    <h3>mensageria</h3>
+                    <h3>{isEnglish ? 'messaging' : 'mensageria'}</h3>
                     <div className="about-console-tags"><span>RabbitMQ</span></div>
                   </section>
                   <section className="stack-group">
-                    <h3>ferramentas</h3>
+                    <h3>{isEnglish ? 'tools' : 'ferramentas'}</h3>
                     <div className="about-console-tags"><span>Docker</span><span>Azure Pipelines</span><span>Azure Repos</span><span>Git / GitHub</span><span>Maven</span><span>Swagger / OpenAPI</span><span>Selenium</span></div>
                   </section>
                 </div>
@@ -198,47 +213,47 @@ export default function App() {
           </div>
         </section>
       ) : (
-        <section className="console-page" aria-label="Terminal de contato">
+        <section className="console-page" aria-label={isEnglish ? 'Contact terminal' : 'Terminal de contato'}>
           <div className="content-terminal">
-            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/contato</span><b>•••</b></div>
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'}</span><b>•••</b></div>
             <div className="content-terminal-body contact-console-body">
               <div className="about-output contact-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/contato $</span> ls redes/</p>
+                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'} $</span> {isEnglish ? 'ls social/' : 'ls redes/'}</p>
                 <div className="contact-list">
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">EM</strong>
-                    <div><h2>E-mail</h2><p>ronaldfrromao@gmail.com</p></div>
-                    <a href="mailto:ronaldfrromao@gmail.com">enviar e-mail <Arrow /></a>
+                    <div><h2>{isEnglish ? 'Email' : 'E-mail'}</h2><p>ronaldfrromao@gmail.com</p></div>
+                    <a href="mailto:ronaldfrromao@gmail.com">{isEnglish ? 'send email' : 'enviar e-mail'} <Arrow /></a>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">IN</strong>
                     <div><h2>LinkedIn</h2><p>linkedin.com/in/ronaldfranklinromao</p></div>
-                    <a href="https://www.linkedin.com/in/ronaldfranklinromao/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <a href="https://www.linkedin.com/in/ronaldfranklinromao/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">DC</strong>
                     <div><h2>Discord</h2><p>ronaldfrromao</p></div>
-                    <span className="contact-pending">usuário</span>
+                    <span className="contact-pending">{isEnglish ? 'username' : 'usuário'}</span>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">WA</strong>
                     <div><h2>WhatsApp</h2><p>+55 31 99145-4035</p></div>
-                    <a href="https://wa.me/5531991454035" target="_blank" rel="noreferrer">enviar mensagem <Arrow /></a>
+                    <a href="https://wa.me/5531991454035" target="_blank" rel="noreferrer">{isEnglish ? 'send a message' : 'enviar mensagem'} <Arrow /></a>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">ST</strong>
                     <div><h2>Steam</h2><p>steamcommunity.com/profiles/76561199004578638</p></div>
-                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">GH</strong>
                     <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
-                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
                   </article>
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">IG</strong>
                     <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
-                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">abrir perfil <Arrow /></a>
+                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
                   </article>
                 </div>
               </div>
@@ -247,7 +262,7 @@ export default function App() {
           </div>
         </section>
       )}
-      <footer><span>RONALD <i>/</i> SITE PESSOAL</span><span>feito com <b>♥</b> e bastante café</span></footer>
+      <footer><span>RONALD <i>/</i> {isEnglish ? 'PERSONAL WEBSITE' : 'SITE PESSOAL'}</span><span>{isEnglish ? 'made with' : 'feito com'} <b>♥</b> {isEnglish ? 'and plenty of coffee' : 'e bastante café'}</span></footer>
     </main>
   )
 }
