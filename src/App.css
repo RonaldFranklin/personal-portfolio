@@ -164,7 +164,7 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .content-scroll-list::-webkit-scrollbar-track { background:rgb(255 255 255 / 5%); }
 .content-scroll-list::-webkit-scrollbar-thumb { border-radius:5px; background:rgb(237 107 58 / 60%); }
 .about-scroll-shell { display:flex; flex-direction:column; }
-.about-scroll-shell .about-output { margin:0 0 28px; }
+.about-scroll-shell .about-output { width:100%; max-width:none; margin:0 0 28px; }
 .contact-scroll-shell .contact-output { width:100%; margin:0; }
 @media (max-width:760px) {
   .content-terminal { height:min(660px,calc(100svh - 225px)); min-height:min(340px,calc(100svh - 210px)); }
