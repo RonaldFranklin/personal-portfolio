@@ -12,7 +12,9 @@ export default function App() {
   const [language, setLanguage] = useState('pt')
   const isEnglish = language === 'en'
   const projectListRef = useRef(null)
+  const contentListRef = useRef(null)
   const [projectScroll, setProjectScroll] = useState({ enabled: false, direction: 'down' })
+  const [contentScroll, setContentScroll] = useState({ enabled: false, direction: 'down' })
 
   useEffect(() => {
     document.documentElement.lang = isEnglish ? 'en' : 'pt-BR'
@@ -24,15 +26,18 @@ export default function App() {
   }, [isEnglish])
 
   useEffect(() => {
-    if (activeTab !== 'projetos') return undefined
+    if (!['projetos', 'sobre', 'contato', 'interesses'].includes(activeTab)) return undefined
 
-    const list = projectListRef.current
+    const isProjectsTab = activeTab === 'projetos'
+    const list = isProjectsTab ? projectListRef.current : contentListRef.current
     if (!list) return undefined
 
     const updateScrollCue = () => {
       const enabled = list.scrollHeight > list.clientHeight + 1
       const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
-      setProjectScroll({ enabled, direction: atBottom ? 'up' : 'down' })
+      const nextState = { enabled, direction: atBottom ? 'up' : 'down' }
+      if (isProjectsTab) setProjectScroll(nextState)
+      else setContentScroll(nextState)
     }
 
     updateScrollCue()
@@ -44,7 +49,7 @@ export default function App() {
       resizeObserver.disconnect()
       mutationObserver.disconnect()
     }
-  }, [activeTab])
+  }, [activeTab, language])
 
   return (
     <main className="page">
@@ -56,6 +61,7 @@ export default function App() {
           <button type="button" aria-current={activeTab === 'inicio' ? 'page' : undefined} onClick={() => setActiveTab('inicio')}>{isEnglish ? 'Home' : 'Início'}</button>
           <button type="button" aria-current={activeTab === 'projetos' ? 'page' : undefined} onClick={() => setActiveTab('projetos')}>{isEnglish ? 'Projects' : 'Projetos'}</button>
           <button type="button" aria-current={activeTab === 'sobre' ? 'page' : undefined} onClick={() => setActiveTab('sobre')}>{isEnglish ? 'About' : 'Sobre'}</button>
+          <button type="button" aria-current={activeTab === 'interesses' ? 'page' : undefined} onClick={() => setActiveTab('interesses')}>{isEnglish ? 'Beyond code' : 'Além do código'}</button>
           <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>{isEnglish ? 'Contact' : 'Contato'}</button>
           <div className="language-switch" role="group" aria-label={isEnglish ? 'Language' : 'Idioma'}>
             <button type="button" aria-pressed={!isEnglish} onClick={() => setLanguage('pt')}>PT</button>
@@ -176,6 +182,12 @@ export default function App() {
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'}</span><b>•••</b></div>
             <div className="content-terminal-body about-console-body">
+              <div className="content-scroll-shell about-scroll-shell">
+              <div className="content-scroll-list" ref={contentListRef} onScroll={() => {
+                const list = contentListRef.current
+                const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+                setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
+              }}>
               <div className="about-output">
                 <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'profile' : 'perfil'} $</span> {isEnglish ? 'cat profile.txt' : 'cat perfil.txt'}</p>
                 <article className="about-entry">
@@ -208,6 +220,48 @@ export default function App() {
                   </section>
                 </div>
               </div>
+              </div>
+              {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
+              </div>
+              <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
+            </div>
+          </div>
+        </section>
+      ) : activeTab === 'interesses' ? (
+        <section className="console-page" aria-label={isEnglish ? 'Beyond code terminal' : 'Terminal além do código'}>
+          <div className="content-terminal">
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'interests' : 'interesses'}</span><b>•••</b></div>
+            <div className="content-terminal-body contact-console-body">
+              <div className="content-scroll-shell contact-scroll-shell">
+              <div className="content-scroll-list" ref={contentListRef} onScroll={() => {
+                const list = contentListRef.current
+                const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+                setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
+              }}>
+              <div className="about-output contact-output">
+                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'interests' : 'interesses'} $</span> {isEnglish ? 'ls interests/' : 'ls gostos/'}</p>
+                <p className="interest-intro">{isEnglish ? 'A few things I enjoy beyond building software.' : 'Um pouco do que gosto além de construir software.'}</p>
+                <div className="contact-list">
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">SP</strong>
+                    <div><h2>Spotify</h2><p>open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4</p></div>
+                    <a href="https://open.spotify.com/user/31htdyso3tbvjhicrw22elj5r6t4" target="_blank" rel="noreferrer">{isEnglish ? 'listen on Spotify' : 'abrir no Spotify'} <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">ST</strong>
+                    <div><h2>Steam</h2><p>steamcommunity.com/profiles/76561199004578638</p></div>
+                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
+                  </article>
+                  <article className="contact-row">
+                    <strong className="contact-mark" aria-hidden="true">IG</strong>
+                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
+                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
+                  </article>
+                </div>
+              </div>
+              </div>
+              {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
+              </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
           </div>
@@ -217,6 +271,12 @@ export default function App() {
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'}</span><b>•••</b></div>
             <div className="content-terminal-body contact-console-body">
+              <div className="content-scroll-shell contact-scroll-shell">
+              <div className="content-scroll-list" ref={contentListRef} onScroll={() => {
+                const list = contentListRef.current
+                const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+                setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
+              }}>
               <div className="about-output contact-output">
                 <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'} $</span> {isEnglish ? 'ls social/' : 'ls redes/'}</p>
                 <div className="contact-list">
@@ -235,27 +295,18 @@ export default function App() {
                     <div><h2>Discord</h2><p>ronaldfrromao</p></div>
                     <span className="contact-pending">{isEnglish ? 'username' : 'usuário'}</span>
                   </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">WA</strong>
-                    <div><h2>WhatsApp</h2><p>+55 31 99145-4035</p></div>
-                    <a href="https://wa.me/5531991454035" target="_blank" rel="noreferrer">{isEnglish ? 'send a message' : 'enviar mensagem'} <Arrow /></a>
-                  </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">ST</strong>
-                    <div><h2>Steam</h2><p>steamcommunity.com/profiles/76561199004578638</p></div>
-                    <a href="https://steamcommunity.com/profiles/76561199004578638/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
+
+
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">GH</strong>
                     <div><h2>GitHub</h2><p>github.com/RonaldFranklin</p></div>
                     <a href="https://github.com/RonaldFranklin" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
                   </article>
-                  <article className="contact-row">
-                    <strong className="contact-mark" aria-hidden="true">IG</strong>
-                    <div><h2>Instagram</h2><p>@_ronaldfranklin</p></div>
-                    <a href="https://www.instagram.com/_ronaldfranklin/" target="_blank" rel="noreferrer">{isEnglish ? 'open profile' : 'abrir perfil'} <Arrow /></a>
-                  </article>
+
                 </div>
+              </div>
+              </div>
+              {contentScroll.enabled && <span className="project-scroll-cue" aria-hidden="true"><b>{contentScroll.direction === 'up' ? '↑' : '↓'}</b><small>{isEnglish ? 'scroll' : 'rolar'}</small></span>}
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
