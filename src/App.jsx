@@ -160,12 +160,33 @@ export default function App() {
           <div className="content-terminal">
             <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/perfil</span><b>•••</b></div>
             <div className="content-terminal-body about-console-body">
-              <p className="console-command"><span>ronald@ubuntu: ~ $</span> cat sobre.txt</p>
               <div className="about-output">
-                <h2>Ronald Franklin</h2>
-                <p>Minha carreira começou no backend, trabalhando com APIs, bancos de dados e sistemas de grande porte.</p>
-                <p>Hoje também atuo no front-end como desenvolvedor full stack, acompanhando o desenvolvimento de software de ponta a ponta.</p>
-                <div className="about-console-tags"><span>backend</span><span>dados</span><span>full stack</span></div>
+                <p className="console-command"><span>ronald@ubuntu: ~/perfil $</span> cat perfil.txt</p>
+                <article className="about-entry">
+                  <h2>Ronald Franklin Rodrigues Romão</h2>
+                  <p>Sou desenvolvedor de software e graduado em Sistemas de Informação. Comecei minha trajetória no backend, construindo APIs e trabalhando com bancos de dados e sistemas de grande porte. Hoje também atuo no front-end, conectando as duas pontas no desenvolvimento full stack.</p>
+                </article>
+              </div>
+              <div className="about-output">
+                <p className="console-command"><span>ronald@ubuntu: ~/perfil $</span> ls stacks/</p>
+                <div className="stack-output">
+                  <section className="stack-group">
+                    <h3>backend</h3>
+                    <div className="about-console-tags"><span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>Node.js</span><span>NestJS</span></div>
+                  </section>
+                  <section className="stack-group">
+                    <h3>frontend</h3>
+                    <div className="about-console-tags"><span>JavaScript</span><span>TypeScript</span><span>React</span></div>
+                  </section>
+                  <section className="stack-group">
+                    <h3>dados</h3>
+                    <div className="about-console-tags"><span>PostgreSQL</span><span>Prisma</span><span>Neo4j</span></div>
+                  </section>
+                  <section className="stack-group">
+                    <h3>ferramentas</h3>
+                    <div className="about-console-tags"><span>Docker</span><span>Git / GitHub</span><span>Maven</span><span>Swagger / OpenAPI</span><span>Selenium</span></div>
+                  </section>
+                </div>
               </div>
               <p className="console-ready"><span>ronald@ubuntu: ~ $</span><i /></p>
             </div>
