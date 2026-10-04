@@ -172,11 +172,11 @@ export default function App() {
                 <div className="stack-output">
                   <section className="stack-group">
                     <h3>backend</h3>
-                    <div className="about-console-tags"><span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>Node.js</span><span>NestJS</span></div>
+                    <div className="about-console-tags"><span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>JavaScript</span><span>Java</span><span>Spring Boot</span><span>Spring Security</span></div>
                   </section>
                   <section className="stack-group">
                     <h3>frontend</h3>
-                    <div className="about-console-tags"><span>JavaScript</span><span>TypeScript</span><span>React</span></div>
+                    <div className="about-console-tags"><span>TypeScript</span><span>JavaScript</span><span>React</span></div>
                   </section>
                   <section className="stack-group">
                     <h3>dados</h3>
