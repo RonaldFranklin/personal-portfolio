@@ -55,14 +55,14 @@ export default function App() {
     <main className="page">
       <div className="ambient ambient-purple" /><div className="ambient ambient-orange" />
       <header className="topbar">
-        <a className="wordmark" href="#inicio" onClick={() => setActiveTab('inicio')}><span className="ubuntu-mark"><i /><i /><i /></span>ronald<span className="orange">.dev</span></a>
+        <a className="wordmark" href="#inicio" onClick={(event) => { event.preventDefault(); setActiveTab('inicio'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}><span className="ubuntu-mark"><i /><i /><i /></span>ronald<span className="orange">.dev</span></a>
         <span className="top-note"><i /> {isEnglish ? 'backend · data · systems' : 'backend · dados · sistemas'}</span>
         <nav className="main-nav" aria-label={isEnglish ? 'Main navigation' : 'Navegação principal'}>
           <button type="button" aria-current={activeTab === 'inicio' ? 'page' : undefined} onClick={() => setActiveTab('inicio')}>{isEnglish ? 'Home' : 'Início'}</button>
           <button type="button" aria-current={activeTab === 'projetos' ? 'page' : undefined} onClick={() => setActiveTab('projetos')}>{isEnglish ? 'Projects' : 'Projetos'}</button>
           <button type="button" aria-current={activeTab === 'sobre' ? 'page' : undefined} onClick={() => setActiveTab('sobre')}>{isEnglish ? 'About' : 'Sobre'}</button>
           <button type="button" aria-current={activeTab === 'interesses' ? 'page' : undefined} onClick={() => setActiveTab('interesses')}>{isEnglish ? 'Beyond code' : 'Além do código'}</button>
-          <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>{isEnglish ? 'Contact' : 'Contato'}</button>
+          <button type="button" aria-current={activeTab === 'contato' ? 'page' : undefined} onClick={() => setActiveTab('contato')}>{isEnglish ? 'Networks' : 'Redes'}</button>
           <div className="language-switch" role="group" aria-label={isEnglish ? 'Language' : 'Idioma'}>
             <button type="button" aria-pressed={!isEnglish} onClick={() => setLanguage('pt')}>PT</button>
             <button type="button" aria-pressed={isEnglish} onClick={() => setLanguage('en')}>EN</button>
@@ -267,9 +267,9 @@ export default function App() {
           </div>
         </section>
       ) : (
-        <section className="console-page" aria-label={isEnglish ? 'Contact terminal' : 'Terminal de contato'}>
+        <section className="console-page" aria-label={isEnglish ? 'Networks terminal' : 'Terminal de redes'}>
           <div className="content-terminal">
-            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'}</span><b>•••</b></div>
+            <div className="content-terminal-bar"><span className="dots"><i /><i /><i /></span><span>ronald@ubuntu: ~/{isEnglish ? 'networks' : 'redes'}</span><b>•••</b></div>
             <div className="content-terminal-body contact-console-body">
               <div className="content-scroll-shell contact-scroll-shell">
               <div className="content-scroll-list" ref={contentListRef} onScroll={() => {
@@ -278,7 +278,7 @@ export default function App() {
                 setContentScroll((current) => ({ ...current, direction: atBottom ? 'up' : 'down' }))
               }}>
               <div className="about-output contact-output">
-                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'contact' : 'contato'} $</span> {isEnglish ? 'ls social/' : 'ls redes/'}</p>
+                <p className="console-command"><span>ronald@ubuntu: ~/{isEnglish ? 'networks' : 'redes'} $</span> {isEnglish ? 'ls networks/' : 'ls redes/'}</p>
                 <div className="contact-list">
                   <article className="contact-row">
                     <strong className="contact-mark" aria-hidden="true">EM</strong>
