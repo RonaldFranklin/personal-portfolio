@@ -187,3 +187,8 @@ footer i { margin:0 6px; color:var(--orange); font-style:normal; } footer b { co
 .social-output { min-width:0; }
 @media (max-width:760px) { .project-scroll-shell,.content-scroll-shell { width:auto; } }
 @media (max-width:460px) { .project-scroll-shell,.content-scroll-shell { width:auto; } }
+
+/* Align the blinking terminal prompt with the inset command lines. */
+.projects-terminal-body>.console-ready,.about-console-body>.console-ready,.contact-console-body>.console-ready { margin-left:26px; }
+@media (max-width:760px) { .projects-terminal-body>.console-ready,.about-console-body>.console-ready,.contact-console-body>.console-ready { margin-left:10px; } }
+@media (max-width:460px) { .projects-terminal-body>.console-ready,.about-console-body>.console-ready,.contact-console-body>.console-ready { margin-left:4px; } }
